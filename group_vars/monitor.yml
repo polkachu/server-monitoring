@@ -1,0 +1,12 @@
+---
+# Prometheus
+prometheus_version: 2.27.1
+prometheus_checksum: ce637d0167d5e6d2561f3bd37e1c58fe8601e13e4e1ea745653c068f6e1317ae
+
+# Grafana
+grafana_version: 8.0.1
+grafana_checksum: 81a3c667e19c69e555800a3cec115768df87999003aac0c9d8a32aaf75ab62b0
+
+# Alert Manager
+alert_manager_version: 0.21.0
+alert_manager_checksum: 9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232

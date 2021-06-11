@@ -1,0 +1,13 @@
+[monitor]
+10.10.10.10
+
+[monitor:vars]
+notifications_email=someone@gmail.com
+notifications_email_password=hellopassword
+nginx_user=nginx_user
+nginx_password=nginx_password
+
+[all:vars]
+ansible_user=ansible_user
+ansible_port=22
+ansible_ssh_private_key_file="~/.ssh/id_rsa"

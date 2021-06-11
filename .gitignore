@@ -1,0 +1,3 @@
+inventory
+/roles/prometheus/files/prometheus.yml
+/roles/prometheus/tasks/config_hosts.yml

@@ -1,0 +1,43 @@
+---
+- name: Install adduser and libfontconfig1
+  apt:
+    name:
+      - adduser
+      - libfontconfig1
+    state: latest
+
+- name: download Grafana
+  get_url:
+    url: "https://dl.grafana.com/oss/release/grafana_{{grafana_version}}_amd64.deb"
+    dest: "/tmp/grafana_{{grafana_version}}_amd64.deb"
+    checksum: "sha256:{{grafana_checksum}}"
+
+- name: install Grafana
+  apt:
+    deb: "/tmp/grafana_{{grafana_version}}_amd64.deb"
+
+- name: start grafana service
+  systemd:
+    name: grafana-server
+    state: restarted
+    daemon_reload: true
+    enabled: true
+  changed_when: false
+
+- name: Disable the default nginx site
+  file:
+    path: "/etc/nginx/sites-enabled/default"
+    state: absent
+
+- name: create nginx config for grafana
+  copy:
+    src: grafana.nginx.conf
+    dest: /etc/nginx/sites-enabled/grafana.conf
+
+- name: restart nginx service
+  systemd:
+    name: nginx
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  changed_when: false

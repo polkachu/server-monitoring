@@ -1,0 +1,9 @@
+---
+- name: Update the /etc/hosts file with node name
+  lineinfile:
+    path: "/etc/hosts"
+    line: "{{item}}"
+    state: present
+    backup: yes
+  loop:
+    - "10.124.0.1 sample sample"

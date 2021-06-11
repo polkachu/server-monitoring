@@ -1,0 +1,16 @@
+---
+- name: Set up a monitor
+  hosts: monitor
+  become: true
+  gather_facts: false
+  pre_tasks:
+    - name: update and upgrade
+      apt:
+        upgrade: dist
+        update_cache: true
+  roles:
+    - prepare
+    - nginx
+    - prometheus
+    - grafana
+    - alert_manager

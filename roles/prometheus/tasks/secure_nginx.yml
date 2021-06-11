@@ -1,0 +1,44 @@
+- name: check if .htpasswd file already exists
+  stat:
+    path: /etc/nginx/.htpasswd
+  register: htpasswd_file
+
+- name: remove libapr related packages
+  apt:
+    pkg:
+      - libapr1
+      - libaprutil1
+    state: absent
+    update_cache: yes
+    autoremove: yes
+  when: not htpasswd_file.stat.exists
+
+- name: install apache2-utils
+  apt:
+    name: apache2-utils
+    state: present
+    update_cache: yes
+  when: not htpasswd_file.stat.exists
+
+- name: generate .htpasswd file
+  shell: |
+    set -o pipefail
+    htpasswd -bc /etc/nginx/.htpasswd {{ nginx_user }} {{ nginx_password }}
+    chmod 600 /etc/nginx/.htpasswd
+    chown www-data:www-data /etc/nginx/.htpasswd
+  args:
+    executable: /bin/bash
+  changed_when: false
+
+- name: create nginx config for prometheus
+  copy:
+    src: prometheus.nginx.conf
+    dest: /etc/nginx/sites-enabled/prometheus.conf
+
+- name: restart nginx service
+  systemd:
+    name: nginx
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  changed_when: false
