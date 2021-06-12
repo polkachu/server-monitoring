@@ -25,6 +25,11 @@
   when:
     - not ufw_status_result.stdout is search("9090/tcp.*ALLOW IN.*Anywhere")
 
+- name: open loki port 3100
+  command: ufw allow 3100/tcp
+  when:
+    - not ufw_status_result.stdout is search("3100/tcp.*ALLOW IN.*Anywhere")
+
 - name: enable firewall
   shell: |
     set -o pipefail

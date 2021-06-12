@@ -40,5 +40,6 @@ You might want to run separate playbook as needed:
 | main_prometheus.yml    | Update Prometheus                     |
 | main_grafana.yml       | Update Grafana                        |
 | main_alert_manager.yml | Update Alert Manager                  |
+| main_loki.yml          | Update Loki                           |
 
 That's it!

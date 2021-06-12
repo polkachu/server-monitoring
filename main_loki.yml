@@ -1,5 +1,5 @@
 ---
-- name: Set up a monitor
+- name: Update Loki
   hosts: monitor
   become: true
   gather_facts: false
@@ -9,10 +9,4 @@
         upgrade: dist
         update_cache: true
   roles:
-    - prepare
-    - nginx
-    - prometheus
-    - grafana
-    - alert_manager
     - loki
-    - promtail

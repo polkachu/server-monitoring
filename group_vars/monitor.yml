@@ -10,3 +10,11 @@ grafana_checksum: 81a3c667e19c69e555800a3cec115768df87999003aac0c9d8a32aaf75ab62
 # Alert Manager
 alert_manager_version: 0.21.0
 alert_manager_checksum: 9ccd863937436fd6bfe650e22521a7f2e6a727540988eef515dde208f9aef232
+
+# Loki
+loki_version: 2.2.1
+loki_checksum: dacfb229dbc7064b1d6390173ea6963eb3c85f60dc2336081b0113476405c5aa
+
+# Loki
+promtail_version: 2.2.1
+promtail_checksum: 40d8d414b44baa78c5010cb7575d74eea035b6b00adb78e9676a045d6730a16f
