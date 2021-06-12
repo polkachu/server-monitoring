@@ -41,5 +41,6 @@ You might want to run separate playbook as needed:
 | main_grafana.yml       | Update Grafana                        |
 | main_alert_manager.yml | Update Alert Manager                  |
 | main_loki.yml          | Update Loki                           |
+| main_node_exporter.yml | Update Node Exporter                  |
 
 That's it!

@@ -1,5 +1,5 @@
 ---
-- name: Set up a monitor
+- name: Update Node exporter
   hosts: monitor
   become: true
   gather_facts: false
@@ -9,11 +9,4 @@
         upgrade: dist
         update_cache: true
   roles:
-    - prepare
-    - nginx
     - node_exporter
-    - prometheus
-    - grafana
-    - alert_manager
-    - loki
-    - promtail
