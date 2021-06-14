@@ -4,8 +4,8 @@ prometheus_version: 2.27.1
 prometheus_checksum: ce637d0167d5e6d2561f3bd37e1c58fe8601e13e4e1ea745653c068f6e1317ae
 
 # Grafana
-grafana_version: 8.0.1
-grafana_checksum: 81a3c667e19c69e555800a3cec115768df87999003aac0c9d8a32aaf75ab62b0
+grafana_version: 8.0.2
+grafana_checksum: fc6a4827b8c829ecec130e5b09b14b49a0f25f8f5d98745bdb3d605a39be3e0b
 
 # Alert Manager
 alert_manager_version: 0.21.0
@@ -20,5 +20,5 @@ promtail_version: 2.2.1
 promtail_checksum: 40d8d414b44baa78c5010cb7575d74eea035b6b00adb78e9676a045d6730a16f
 
 # Node Exporter
-node_exporter_version: "1.1.2"
-node_exporter_checksum: "8c1f6a317457a658e0ae68ad710f6b4098db2cad10204649b51e3c043aa3e70d"
+node_exporter_version: 1.1.2
+node_exporter_checksum: 8c1f6a317457a658e0ae68ad710f6b4098db2cad10204649b51e3c043aa3e70d
