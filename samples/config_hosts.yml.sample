@@ -2,8 +2,9 @@
 - name: Update the /etc/hosts file with node name
   lineinfile:
     path: "/etc/hosts"
-    line: "{{item}}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
     state: present
     backup: yes
   loop:
-    - "10.124.0.1 sample sample"
+    - { regexp: "polkadot1", line: "10.124.0.6 polkadot1 polkadot1" }
