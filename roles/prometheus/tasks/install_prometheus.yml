@@ -2,13 +2,13 @@
 - name: Create Prometheus user
   user:
     name: prometheus
-    comment: "Prometheus user"
+    comment: 'Prometheus user'
     shell: /usr/sbin/nologin
     state: present
 
 - name: Creates Prometheus directory
   file:
-    path: "{{ item }}"
+    path: '{{ item }}'
     state: directory
     owner: prometheus
     group: prometheus
@@ -21,21 +21,21 @@
 
 - name: download Prometheus
   get_url:
-    url: "https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
-    checksum: "sha256:{{ prometheus_checksum }}"
-    dest: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
-    mode: "0700"
+    url: 'https://github.com/prometheus/prometheus/releases/download/v{{ prometheus_version }}/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz'
+    checksum: 'sha256:{{ prometheus_checksum }}'
+    dest: '/tmp/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz'
+    mode: '0700'
 
 - name: unarchive Prometheus
   unarchive:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz"
+    src: '/tmp/prometheus-{{ prometheus_version }}.linux-amd64.tar.gz'
     remote_src: yes
-    dest: "/tmp"
+    dest: '/tmp'
 
 - name: Copy binary files
   copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}"
-    dest: "/usr/local/bin/"
+    src: '/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}'
+    dest: '/usr/local/bin/'
     remote_src: true
     owner: prometheus
     group: prometheus
@@ -46,8 +46,8 @@
 
 - name: Copy folders files
   copy:
-    src: "/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}"
-    dest: "/etc/prometheus/"
+    src: '/tmp/prometheus-{{ prometheus_version }}.linux-amd64/{{ item }}'
+    dest: '/etc/prometheus/'
     remote_src: true
     owner: prometheus
     group: prometheus
@@ -57,23 +57,23 @@
 
 - name: Copy prometheus config
   copy:
-    src: "prometheus.yml"
-    dest: "/etc/prometheus/prometheus.yml"
+    src: 'prometheus.yml'
+    dest: '/etc/prometheus/prometheus.yml'
     owner: prometheus
     group: prometheus
 
 - name: Copy prometheus service file
   copy:
-    src: "prometheus.service"
-    dest: "/etc/systemd/system/prometheus.service"
+    src: 'prometheus.service'
+    dest: '/etc/systemd/system/prometheus.service'
     owner: root
     group: root
     mode: 600
 
 - name: Copy prometheus rule file
   copy:
-    src: "rules.yml"
-    dest: "/etc/prometheus/rules.yml"
+    src: 'rules.yml'
+    dest: '/etc/prometheus/rules.yml'
     owner: root
     group: root
   changed_when: false

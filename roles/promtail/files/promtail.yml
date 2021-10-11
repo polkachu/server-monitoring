@@ -16,8 +16,8 @@ scrape_configs:
         job: systemd-journal
         host: monitor
     relabel_configs:
-      - source_labels: ["__journal__systemd_unit"]
-        target_label: "unit"
+      - source_labels: ['__journal__systemd_unit']
+        target_label: 'unit'
 
   - job_name: nginx
     static_configs:
