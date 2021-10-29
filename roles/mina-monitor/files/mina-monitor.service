@@ -1,0 +1,12 @@
+[Unit]
+Description=Mina Monitor Service
+
+[Service]
+ExecStart=npm run client
+Restart=always
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/mina-monitor-client
+
+[Install]
+WantedBy=multi-user.target
