@@ -1,6 +1,6 @@
 ---
-- name: Config hosts
-  import_tasks: config_hosts.yml
+- name: Update hosts
+  import_tasks: update_hosts.yml
 
 - name: Install Prometheus
   import_tasks: install_prometheus.yml

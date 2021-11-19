@@ -1,0 +1,8 @@
+---
+- name: Update the /etc/hosts file
+  copy:
+    src: 'hosts'
+    dest: '/etc/hosts'
+    owner: root
+    group: prometheus
+    mode: '0644'

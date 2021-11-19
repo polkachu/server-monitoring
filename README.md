@@ -2,7 +2,7 @@
 
 This repo is to set up Prometheus, Grafana and Alert Manager for a group of networked servers.
 
-## Setp 1: Set up your own inventory file
+## Step 1: Set up your own inventory file
 
 Copy inventory file, and make your edits.
 
@@ -10,12 +10,12 @@ Copy inventory file, and make your edits.
 cp samples/inventory.sample inventory
 ```
 
-## Setp 2: Customize several key files
+## Step 2: Customize several key files
 
 Copy two configuration files, and make edits to reflect how your network is setup and what prometheus jobs you want to run.
 
 ```bash
-cp samples/config_hosts.yml.sample roles/prometheus/tasks/config_hosts.yml
+cp samples/hosts.sample roles/prometheus/tasks/files/hosts
 cp samples/prometheus.yml.sample roles/prometheus/files/prometheus.yml
 ```
 
