@@ -2,13 +2,13 @@
 - name: Create Loki user
   user:
     name: loki
-    comment: "Loki user"
+    comment: 'Loki user'
     shell: /usr/sbin/nologin
     state: present
 
 - name: Creates Loki directory
   file:
-    path: "/etc/loki"
+    path: '/etc/loki'
     state: directory
     owner: loki
     group: loki
@@ -23,21 +23,20 @@
 
 - name: download Loki
   get_url:
-    url: "https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-amd64.zip"
-    checksum: "sha256:{{ loki_checksum }}"
-    dest: "/tmp/loki-linux-amd64.zip"
-    mode: "0700"
+    url: 'https://github.com/grafana/loki/releases/download/v{{ loki_version }}/loki-linux-amd64.zip'
+    dest: '/tmp/loki-linux-amd64.zip'
+    mode: '0700'
 
 - name: unarchive Loki
   unarchive:
-    src: "/tmp/loki-linux-amd64.zip"
+    src: '/tmp/loki-linux-amd64.zip'
     remote_src: yes
-    dest: "/tmp"
+    dest: '/tmp'
 
 - name: Copy binary file
   copy:
-    src: "/tmp/loki-linux-amd64"
-    dest: "/usr/local/bin/loki"
+    src: '/tmp/loki-linux-amd64'
+    dest: '/usr/local/bin/loki'
     remote_src: true
     owner: loki
     group: loki
@@ -45,15 +44,15 @@
 
 - name: Copy loki config
   copy:
-    src: "loki.yml"
-    dest: "/etc/loki/loki.yml"
+    src: 'loki.yml'
+    dest: '/etc/loki/loki.yml'
     owner: loki
     group: loki
 
 - name: Copy loki service file
   copy:
-    src: "loki.service"
-    dest: "/etc/systemd/system/loki.service"
+    src: 'loki.service'
+    dest: '/etc/systemd/system/loki.service'
     owner: root
     group: root
     mode: 600

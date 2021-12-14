@@ -1,21 +1,20 @@
 ---
 - name: download Alert Manager
   get_url:
-    url: "https://github.com/prometheus/alertmanager/releases/download/v{{ alert_manager_version }}/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz"
-    checksum: "sha256:{{ alert_manager_checksum }}"
-    dest: "/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz"
-    mode: "0700"
+    url: 'https://github.com/prometheus/alertmanager/releases/download/v{{ alert_manager_version }}/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz'
+    dest: '/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz'
+    mode: '0700'
 
 - name: unarchive Alert Manager
   unarchive:
-    src: "/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz"
+    src: '/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64.tar.gz'
     remote_src: yes
-    dest: "/tmp"
+    dest: '/tmp'
 
 - name: Copy binary files
   copy:
-    src: "/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64/alertmanager"
-    dest: "/usr/local/bin/"
+    src: '/tmp/alertmanager-{{ alert_manager_version }}.linux-amd64/alertmanager'
+    dest: '/usr/local/bin/'
     remote_src: true
     owner: prometheus
     group: prometheus
@@ -23,7 +22,7 @@
 
 - name: Creates alert manager directory
   file:
-    path: "/etc/alertmanager"
+    path: '/etc/alertmanager'
     state: directory
     owner: prometheus
     group: prometheus
@@ -33,15 +32,15 @@
 
 - name: Copy Alert Manager config
   template:
-    src: "alertmanager.yml.j2"
-    dest: "/etc/alertmanager/alertmanager.yml"
+    src: 'alertmanager.yml.j2'
+    dest: '/etc/alertmanager/alertmanager.yml'
     owner: prometheus
     group: prometheus
 
 - name: Copy Alert Manager service file
   copy:
-    src: "alertmanager.service"
-    dest: "/etc/systemd/system/alertmanager.service"
+    src: 'alertmanager.service'
+    dest: '/etc/systemd/system/alertmanager.service'
     owner: root
     group: root
     mode: 600
@@ -55,7 +54,7 @@
   changed_when: false
 
 - name: Install Grafana plugin
-  shell: "sudo grafana-cli plugins install camptocamp-prometheus-alertmanager-datasource"
+  shell: 'sudo grafana-cli plugins install camptocamp-prometheus-alertmanager-datasource'
   changed_when: false
 
 - name: Restart Grafana
