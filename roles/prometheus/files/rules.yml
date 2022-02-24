@@ -16,5 +16,14 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: Host high CPU load (instance bLd Kusama)
+          summary: Host high CPU load
           description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+
+      - alert: HighStorage
+        expr: 100 - (100 * ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} )  / (node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) )) > 90
+        for: 0m
+        labels:
+          severity: warning
+        annotations:
+          summary: High Storage
+          description: "Storage utilization is > 90%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"

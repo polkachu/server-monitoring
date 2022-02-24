@@ -7,7 +7,7 @@ route:
 receivers:
   - name: "gmail-notifications"
     email_configs:
-      - to: {{ notifications_email }}
+      - to: {{ receiving_email }}
         from: {{ notifications_email }}
         smarthost: smtp.gmail.com:587
         auth_username: {{ notifications_email }}

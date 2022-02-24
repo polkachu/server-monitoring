@@ -2,8 +2,9 @@
 10.10.10.10
 
 [monitor:vars]
+receiving_email=receive@gmail.com
 notifications_email=someone@gmail.com
-notifications_email_password=hellopassword
+notifications_email_password=password
 nginx_user=nginx_user
 nginx_password=nginx_password
 
