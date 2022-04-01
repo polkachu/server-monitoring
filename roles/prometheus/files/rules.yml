@@ -20,10 +20,10 @@ groups:
           description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
 
       - alert: HighStorage
-        expr: 100 - (100 * ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} )  / (node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) )) > 90
+        expr: 100 - (100 * ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} )  / (node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) )) > 95
         for: 0m
         labels:
           severity: warning
         annotations:
           summary: High Storage
-          description: "Storage utilization is > 90%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+          description: "Storage utilization is > 95%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
