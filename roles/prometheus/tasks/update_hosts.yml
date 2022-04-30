@@ -1,4 +1,9 @@
 ---
+- name: Create prometheus group
+  group:
+    name: prometheus
+    state: present
+
 - name: Update the /etc/hosts file
   copy:
     src: 'hosts'

@@ -1,7 +1,7 @@
 ---
-prometheus_version: 2.32.1
-grafana_version: 8.3.4
-alert_manager_version: 0.23.0
-loki_version: 2.4.2
-promtail_version: 2.4.1
+prometheus_version: 2.35.0
+grafana_version: 8.5.1
+alert_manager_version: 0.24.0
+loki_version: 2.5.0
+promtail_version: 2.5.0
 node_exporter_version: 1.3.1

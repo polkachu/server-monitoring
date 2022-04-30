@@ -20,6 +20,11 @@
   when:
     - not ufw_status_result.stdout is search("443/tcp.*ALLOW IN.*Anywhere")
 
+- name: open node exporter port 9100
+  command: ufw allow 9100/tcp
+  when:
+    - not ufw_status_result.stdout is search("9100/tcp.*ALLOW IN.*Anywhere")
+
 - name: open prometheus port 9090
   command: ufw allow 9090/tcp
   when:
