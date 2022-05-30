@@ -3,10 +3,5 @@
   hosts: monitor
   become: true
   gather_facts: false
-  pre_tasks:
-    - name: update and upgrade
-      apt:
-        upgrade: dist
-        update_cache: true
   roles:
     - prometheus

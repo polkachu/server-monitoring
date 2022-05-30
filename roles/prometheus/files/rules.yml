@@ -11,19 +11,19 @@ groups:
           description: '[{{ $labels.instance }}] of job [{{ $labels.job }}] has been down for more than 1 minute.'
 
       - alert: HostHighCpuLoad
-        expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 90
+        expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 80
         for: 0m
         labels:
           severity: warning
         annotations:
           summary: Host high CPU load
-          description: "CPU load is > 90%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+          description: "CPU load is > 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
 
       - alert: HighStorage
-        expr: 100 - (100 * ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} )  / (node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) )) > 95
+        expr: 100 - (100 * ((node_filesystem_avail_bytes{mountpoint="/",fstype!="rootfs"} )  / (node_filesystem_size_bytes{mountpoint="/",fstype!="rootfs"}) )) > 80
         for: 0m
         labels:
           severity: warning
         annotations:
           summary: High Storage
-          description: "Storage utilization is > 95%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
+          description: "Storage utilization is > 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}"
