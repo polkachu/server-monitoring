@@ -1,6 +1,6 @@
 ---
 prometheus_version: 2.35.0
-grafana_version: 9.1.2
+grafana_version: 9.1.4
 alert_manager_version: 0.24.0
 loki_version: 2.6.1
 promtail_version: 2.6.1
