@@ -64,3 +64,25 @@
     daemon_reload: true
     enabled: true
   changed_when: false
+
+- name: Add a user to a password file and ensure permissions are set
+  community.general.htpasswd:
+    path: /etc/nginx/conf.d/proxies/loki.htpasswd
+    name: loki
+    password: '1002ab'
+    owner: root
+    group: www-data
+    mode: 0640
+
+- name: Install nginx site for letsencrypt requests
+  template:
+    src: loki-nginx.j2
+    dest: /etc/nginx/sites-enabled/loki.conf
+
+- name: restart nginx service
+  systemd:
+    name: nginx
+    state: restarted
+    daemon_reload: yes
+    enabled: yes
+  changed_when: false

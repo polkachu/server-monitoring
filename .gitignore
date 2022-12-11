@@ -1,4 +1,5 @@
 inventory.ini
+inventory
 /roles/prometheus/files/hosts
 /roles/prometheus/files/ww_hosts
 /roles/prometheus/files/prometheus.yml
