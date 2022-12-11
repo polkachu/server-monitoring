@@ -35,6 +35,11 @@
   when:
     - not ufw_status_result.stdout is search("3100/tcp.*ALLOW IN.*Anywhere")
 
+- name: open ssh port
+  command: ufw allow ssh
+  when:
+    - not ufw_status_result.stdout is search("ssh.*ALLOW IN.*Anywhere")
+
 - name: enable firewall
   shell: |
     set -o pipefail

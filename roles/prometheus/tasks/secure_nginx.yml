@@ -31,9 +31,9 @@
   changed_when: false
 
 - name: create nginx config for prometheus
-  copy:
-    src: prometheus.nginx.conf
-    dest: /etc/nginx/sites-enabled/prometheus.conf
+  template:
+    src: 'prometheus.nginx.j2'
+    dest: '/etc/nginx/sites-enabled/prometheus.conf'
 
 - name: restart nginx service
   systemd:
