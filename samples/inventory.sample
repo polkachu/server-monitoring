@@ -9,6 +9,8 @@ nginx_user=nginx_user
 nginx_password=nginx_password
 domain_name = monitoring.enby-collective.org
 letsencrypt_email = user@email.com
+loki_user = user
+loki_password = password
 
 [all:vars]
 ansible_user=ansible_user

@@ -68,8 +68,8 @@
 - name: Add a user to a password file and ensure permissions are set
   community.general.htpasswd:
     path: /etc/nginx/conf.d/proxies/loki.htpasswd
-    name: loki
-    password: '1002ab'
+    name: '{{ loki_user }}'
+    password: '{{ loki_password }}'
     owner: root
     group: www-data
     mode: 0640
