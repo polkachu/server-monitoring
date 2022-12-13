@@ -1,15 +1,9 @@
-include ssl_header.conf;
-
 server {
   include ssl_server.conf;
 
   location / {
    proxy_pass http://localhost:3000/;
    proxy_set_header Host $http_host;
-  }
-
-  location /loki/ {
-   proxy_pass http://localhost:3100/;
   }
 
   location /metrics {
