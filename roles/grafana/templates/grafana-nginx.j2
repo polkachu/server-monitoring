@@ -1,9 +1,10 @@
+include ssl_header.conf;
+
 server {
-  listen 80;
+  listen 443 ssl;
   server_name {{ domain_name }};
 
-  root /usr/share/nginx/html;
-  index index.html index.htm;
+  include ssl_server.conf;
 
   location / {
    proxy_pass http://localhost:3000/;
