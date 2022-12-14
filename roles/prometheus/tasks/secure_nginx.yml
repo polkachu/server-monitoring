@@ -30,10 +30,10 @@
     executable: /bin/bash
   changed_when: false
 
-# - name: create nginx config for prometheus
-#   template:
-#     src: 'prometheus.nginx.j2'
-#     dest: '/etc/nginx/sites-enabled/prometheus.conf'
+- name: create nginx config for prometheus
+  template:
+    src: 'prometheus.nginx.j2'
+    dest: '/etc/nginx/applications/prometheus.conf'
 
 - name: restart nginx service
   systemd:

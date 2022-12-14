@@ -1,13 +1,5 @@
-server {
-  include ssl_server.conf;
-
-  root /usr/share/nginx/html;
-  index index.html index.htm;
-
-  location /prometheus {
-    proxy_pass http://localhost:9090/;
-
+location /prometheus {
+    proxy_pass http://127.0.0.1:9090;
     auth_basic "Prometheus";
     auth_basic_user_file ".htpasswd";
-  }
 }

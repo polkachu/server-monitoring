@@ -74,10 +74,10 @@
     group: www-data
     mode: 0640
 
-# - name: Install nginx site for letsencrypt requests
-#   template:
-#     src: loki-nginx.j2
-#     dest: /etc/nginx/sites-enabled/loki.conf
+- name: Install nginx site for letsencrypt requests
+  template:
+    src: loki-nginx.j2
+    dest: /etc/nginx/applications/loki.conf
 
 - name: restart nginx service
   systemd:

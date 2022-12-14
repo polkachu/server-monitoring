@@ -31,7 +31,7 @@
 - name: Install nginx site for letsencrypt requests
   template:
     src: grafana-nginx.j2
-    dest: /etc/nginx/sites-enabled/grafana.conf
+    dest: /etc/nginx/applications/grafana.conf
 
 - name: restart nginx service
   systemd:

@@ -13,6 +13,9 @@
     name: nginx
     state: latest
 
+- name: Create nginx applications directory
+  file: path=/etc/nginx/applications state=directory mode=0755
+
 - name: install letsencrypt
   apt: name=letsencrypt state=latest
 
@@ -32,6 +35,14 @@
     src: nginx-http.j2
     dest: /etc/nginx/sites-enabled/http.conf
 
+- name: create ssh-header.conf file
+  copy:
+    src: ssl_header.conf
+    dest: /etc/nginx/ssl_header.conf
+    owner: root
+    group: root
+    mode: '600'
+
 - name: Reload nginx to activate letsencrypt site
   service: name=nginx state=restarted
 
@@ -45,20 +56,12 @@
   args:
     creates: /etc/nginx/dhparams.pem
 
-- name: create ssh-header.conf file
-  copy:
-    src: ssl_header.conf
-    dest: /etc/nginx/ssl_header.conf
-    owner: root
-    group: root
-    mode: '600'
-
-- name: Create ssh-server.conf file
+- name: Create ssl.conf file
   template:
-    src: nginx-ssl-server.j2
-    dest: /etc/nginx/ssl_server.conf
+    src: nginx-ssl.j2
+    dest: /etc/nginx/sites-enabled/ssl.conf
 
-- name: Reload nginx to activate specified site
+- name: Reload nginx ssl conf
   service: name=nginx state=restarted
 
 - name: Add letsencrypt cronjob for cert renewal
