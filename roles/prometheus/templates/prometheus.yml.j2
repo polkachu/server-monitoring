@@ -17,7 +17,7 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: 'kusama1 node'
+  - job_name: 'Enby1 Node'
     scrape_interval: 10s
     scrape_timeout: 10s
     scheme: https
@@ -28,7 +28,7 @@ scrape_configs:
       username: '{{ data_user }}'
       password: '{{ data_password }}'
 
-  - job_name: 'kusama1 process'
+  - job_name: 'Enby1 Process'
     scrape_interval: 10s
     scrape_timeout: 10s
     scheme: https
