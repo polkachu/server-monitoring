@@ -54,6 +54,10 @@
     - consoles
     - console_libraries
 
+- name: Use validator vars
+  include_vars: 
+    file: 'validators.yml'
+
 - name: create Prometheus config
   template:
     src: 'prometheus.yml.j2'

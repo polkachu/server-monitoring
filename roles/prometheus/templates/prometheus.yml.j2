@@ -17,24 +17,26 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: 'Enby1 Node'
+{% for validator in validators %}
+  - job_name: '{{ validator.name }} Node'
     scrape_interval: 10s
     scrape_timeout: 10s
     scheme: https
     static_configs:
-        - targets: ['{{ enby1_dns }}']
+        - targets: ['{{ validator.dns }}']
     metrics_path: "/node_exporter"
     basic_auth:
-      username: '{{ data_user }}'
-      password: '{{ data_password }}'
+      username: '{{ validator.data_user }}'
+      password: '{{ validator.data_password }}'
 
-  - job_name: 'Enby1 Process'
+  - job_name: '{{ validator.name }} Process'
     scrape_interval: 10s
     scrape_timeout: 10s
     scheme: https
     static_configs:
-        - targets: ['{{ enby1_dns }}']
+        - targets: ['{{ validator.dns }}']
     metrics_path: "/process_exporter"
     basic_auth:
-      username: '{{ data_user }}'
-      password: '{{ data_password }}'
+      username: '{{ validator.data_user }}'
+      password: '{{ validator.data_password }}'
+{% endfor %}

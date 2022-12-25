@@ -1,0 +1,5 @@
+validators:
+   - name: enby1
+     dns: enbydomaan.com
+     data_user: data-user
+     data_password: data_password
