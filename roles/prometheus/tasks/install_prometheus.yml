@@ -54,12 +54,10 @@
     - consoles
     - console_libraries
 
-- name: Copy prometheus config
-  copy:
-    src: 'prometheus.yml'
+- name: create Prometheus config
+  template:
+    src: 'prometheus.yml.j2'
     dest: '/etc/prometheus/prometheus.yml'
-    owner: prometheus
-    group: prometheus
 
 - name: Copy prometheus service file
   copy:
