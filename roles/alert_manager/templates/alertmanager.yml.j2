@@ -2,10 +2,10 @@ global:
   resolve_timeout: 1m
 
 route:
-  receiver: 'default-telegram' # see below
+  receiver: "default-telegram" # see below
 
 receivers:
-- name: 'default-telegram'
+- name: "default-telegram"
   telegram_configs:
   - bot_token: {{ notifications_telegram_token }}
     api_url: https://api.telegram.org
