@@ -9,11 +9,11 @@
         upgrade: dist
         update_cache: true
   roles:
-    # - prepare
-    # - lets_encrypt
-    # - node_exporter
-    # - prometheus
-    # - grafana
+    - prepare
+    - lets_encrypt
+    - node_exporter
+    - prometheus
+    - grafana
     - alert_manager
-    # - loki
-    # - promtail
+    - loki
+    - promtail
