@@ -2,15 +2,17 @@ global:
   resolve_timeout: 1m
 
 route:
-  receiver: "gmail-notifications"
+  receiver: 'default-telegram' # see below
 
 receivers:
-  - name: "gmail-notifications"
-    email_configs:
-      - to: {{ receiving_email }}
-        from: {{ notifications_email }}
-        smarthost: smtp.gmail.com:587
-        auth_username: {{ notifications_email }}
-        auth_identity: {{ notifications_email }}
-        auth_password: {{ notifications_email_password }}
-        send_resolved: true
+- name: 'default-telegram'
+  telegram_configs:
+  - bot_token: {{ notifications_telegram_token }}
+    api_url: https://api.telegram.org
+    chat_id: {{ notifications_telegram_chat_id }}
+    disable_notifications: false
+    http_config:
+      follow_redirects: true
+    send_resolved: false
+    parse_mode: ""
+
