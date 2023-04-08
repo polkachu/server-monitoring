@@ -1,0 +1,23 @@
+---
+- name: Update the /etc/hosts file
+  copy:
+    src: 'hosts'
+    dest: '/etc/hosts'
+    owner: root
+    group: prometheus
+    mode: '0644'
+
+- name: Copy prometheus config
+  copy:
+    src: 'prometheus.yml'
+    dest: '/etc/prometheus/prometheus.yml'
+    owner: prometheus
+    group: prometheus
+
+- name: start prometheus service
+  systemd:
+    name: prometheus
+    state: restarted
+    daemon_reload: true
+    enabled: true
+  changed_when: false

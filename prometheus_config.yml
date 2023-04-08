@@ -1,7 +1,7 @@
 ---
-- name: Update Prometheus
+- name: Update prometheus config
   hosts: monitor
   become: true
   gather_facts: false
   roles:
-    - prometheus
+    - prometheus_config

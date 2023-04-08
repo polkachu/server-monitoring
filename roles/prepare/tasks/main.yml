@@ -12,28 +12,15 @@
 
 - name: open http port 80
   command: ufw allow 80/tcp
-  when:
-    - not ufw_status_result.stdout is search("80/tcp.*ALLOW IN.*Anywhere")
-
-- name: open https port 443
-  command: ufw allow 443/tcp
-  when:
-    - not ufw_status_result.stdout is search("443/tcp.*ALLOW IN.*Anywhere")
 
 - name: open node exporter port 9100
   command: ufw allow 9100/tcp
-  when:
-    - not ufw_status_result.stdout is search("9100/tcp.*ALLOW IN.*Anywhere")
 
 - name: open prometheus port 9090
   command: ufw allow 9090/tcp
-  when:
-    - not ufw_status_result.stdout is search("9090/tcp.*ALLOW IN.*Anywhere")
 
 - name: open loki port 3100
   command: ufw allow 3100/tcp
-  when:
-    - not ufw_status_result.stdout is search("3100/tcp.*ALLOW IN.*Anywhere")
 
 - name: enable firewall
   shell: |
@@ -41,4 +28,3 @@
     echo "y" | ufw enable
   args:
     executable: /bin/bash
-  when: not ufw_status_result.stdout is search("Status.* active")

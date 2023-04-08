@@ -1,6 +1,3 @@
 inventory.ini
-/whitewhale
-/roles/prometheus/files/hosts
-/roles/prometheus/files/ww_hosts
-/roles/prometheus/files/prometheus.yml
-/roles/prometheus/files/ww_prometheus.yml
+/roles/prometheus_config/files/hosts
+/roles/prometheus_config/files/prometheus.yml
