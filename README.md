@@ -16,7 +16,7 @@ Copy two configuration files, and make edits to reflect how your network is setu
 
 ```bash
 cp samples/hosts.sample roles/prometheus_config/files/hosts
-cp samples/prometheus.yml.sample roles/prometheus_config/files/prometheus.yml
+cp samples/prometheus.yml.sample roles/prometheus_config/templates/prometheus.yml.j2
 ```
 
 The config_hosts.yml file is how we set up internal DNS lookup by editing /etc/hosts file. This will make the Grafana dashboard easier to read as each server has its human-readable name rather than an IP address like "10.0.0.1"

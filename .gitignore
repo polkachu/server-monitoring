@@ -1,3 +1,4 @@
 inventory.ini
 /roles/prometheus_config/files/hosts
 /roles/prometheus_config/files/prometheus.yml
+/roles/prometheus_config/templates/prometheus.yml.j2

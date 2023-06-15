@@ -8,8 +8,8 @@
     mode: '0644'
 
 - name: Copy prometheus config
-  copy:
-    src: 'prometheus.yml'
+  template:
+    src: 'prometheus.yml.j2'
     dest: '/etc/prometheus/prometheus.yml'
     owner: prometheus
     group: prometheus
