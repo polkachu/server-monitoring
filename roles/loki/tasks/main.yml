@@ -6,6 +6,16 @@
     shell: /usr/sbin/nologin
     state: present
 
+- name: generate .loki file
+  shell: |
+    set -o pipefail
+    htpasswd -bc /etc/nginx/.loki {{ loki_user }} {{ loki_password }}
+    chmod 600 /etc/nginx/.loki
+    chown www-data:www-data /etc/nginx/.loki
+  args:
+    executable: /bin/bash
+  changed_when: false
+
 - name: Creates Loki directory
   file:
     path: '/etc/loki'

@@ -1,6 +1,6 @@
-- name: check if .htpasswd file already exists
+- name: check if .prometheus file already exists
   stat:
-    path: /etc/nginx/.htpasswd
+    path: /etc/nginx/.prometheus
   register: htpasswd_file
 
 - name: remove libapr related packages
@@ -20,12 +20,12 @@
     update_cache: yes
   when: not htpasswd_file.stat.exists
 
-- name: generate .htpasswd file
+- name: generate .prometheus file
   shell: |
     set -o pipefail
-    htpasswd -bc /etc/nginx/.htpasswd {{ nginx_user }} {{ nginx_password }}
-    chmod 600 /etc/nginx/.htpasswd
-    chown www-data:www-data /etc/nginx/.htpasswd
+    htpasswd -bc /etc/nginx/.prometheus {{ prometheus_user }} {{ prometheus_password }}
+    chmod 600 /etc/nginx/.prometheus
+    chown www-data:www-data /etc/nginx/.prometheus
   args:
     executable: /bin/bash
   changed_when: false

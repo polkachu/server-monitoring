@@ -16,12 +16,6 @@
 - name: open node exporter port 9100
   command: ufw allow 9100/tcp
 
-- name: open prometheus port 9090
-  command: ufw allow 9090/tcp
-
-- name: open loki port 3100
-  command: ufw allow 3100/tcp
-
 - name: enable firewall
   shell: |
     set -o pipefail

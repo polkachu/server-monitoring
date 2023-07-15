@@ -5,8 +5,8 @@
 receiving_email=receive@gmail.com
 notifications_email=someone@gmail.com
 notifications_email_password=password
-nginx_user=nginx_user
-nginx_password=nginx_password
+prometheus_user=prometheus_user
+prometheus_password=prometheus_password
 
 [all:vars]
 ansible_user=ansible_user
