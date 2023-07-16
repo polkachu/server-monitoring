@@ -13,9 +13,6 @@
 - name: open http port 80
   command: ufw allow 80/tcp
 
-- name: open node exporter port 9100
-  command: ufw allow 9100/tcp
-
 - name: enable firewall
   shell: |
     set -o pipefail
