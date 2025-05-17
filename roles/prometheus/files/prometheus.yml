@@ -9,4 +9,4 @@ alerting:
   alertmanagers:
     - static_configs:
         - targets:
-            - localhost:9093
+            - localhost:{{ alertmanager_port }}

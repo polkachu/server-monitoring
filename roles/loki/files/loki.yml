@@ -1,8 +1,8 @@
 auth_enabled: false
 
 server:
-  http_listen_port: 3100
-  grpc_listen_port: 9096
+  http_listen_port: {{ nginx_proxy_loki_port }}
+  grpc_listen_port: {{ loki_grpc_listen_port }}
 
 ingester:
   wal:
@@ -61,7 +61,7 @@ ruler:
     local:
       directory: /tmp/loki/rules
   rule_path: /tmp/loki/rules-temp
-  alertmanager_url: http://localhost:9093
+  alertmanager_url: http://localhost:{{ alertmanager_port }}
   ring:
     kvstore:
       store: inmemory
