@@ -1,0 +1,9 @@
+alertmanager_port: 9093
+nginx_listen_port: 80
+nginx_server_name: monitor.polkachu.com
+nginx_server_name_prometheus: prometheus.polkachu.com
+nginx_prometheus_port: 9090
+nginx_proxy_grafana_port: 3000
+nginx_proxy_loki_port: 3100
+loki_grpc_listen_port: 9096
+loki_http_listen_port: 9080

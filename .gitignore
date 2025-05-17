@@ -1,4 +1,37 @@
+# Inventory and configuration files
 inventory.ini
-/roles/prometheus_config/files/hosts
-/roles/prometheus_config/files/prometheus.yml
-/roles/prometheus_config/templates/prometheus.yml.j2
+config_hosts.yml
+
+# Prometheus configuration files
+roles/prometheus_config/files/hosts
+roles/prometheus_config/files/prometheus.yml
+roles/prometheus_config/templates/prometheus.yml.j2
+
+# Sample files
+samples/inventory.sample
+samples/hosts.sample
+samples/prometheus.yml.sample
+
+# Ansible-related files
+*.retry
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor swap files
+*.swp
+*.swo
+*.bak
+*.tmp
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env/
