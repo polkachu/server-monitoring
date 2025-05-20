@@ -30,3 +30,4 @@ ansible-playbook -i inventory main.yml
 ```
 
 That's it!
+
